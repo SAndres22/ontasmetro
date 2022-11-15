@@ -1,0 +1,55 @@
+{% extends './base.html' %} {% block title %}Iniciar Sesion{% endblock %} {%
+block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+{% endblock %} {% block body %}
+
+<div class="modal modal-signin d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-5 shadow">
+            <main class="form-signin w-100 m-auto">
+                <form method="post" action="/login">
+                    <img class="mb-4" src="{{ url_for('static', filename='img/Metrolinea_Logo.png') }}" width="200"
+                        height="87" />
+                    <div style="display: flex;
+                        flex-shrink: 0;
+                        align-items: center;
+                        justify-content: space-between;" class=" border-bottom-0">
+                            <!-- <h5 class="modal-title">Modal title</h5> -->
+                        <h2 style="margin: 7px auto;">Inicia Sesión</h2>
+                    </div>
+                    {% with messages = get_flashed_messages() %}
+                    
+                    {% if messages %}
+                        <div class="alert  alert-danger" role="alert">
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% endwith %}
+                    <div class="form-floating mb-2">
+                        <input autocomplete="off" type="text" class="form-control" id="floatingInput" name="userName"
+                            placeholder="Usuario" />
+                        <label for="floatingInput">Usuario</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+                            name="password" />
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">
+                        Iniciar Sesion
+                    </button>
+
+                    <div class="mt-2">
+                        <span class="text-muted">No tengo cuenta,
+                            <a href="{{url_for('registro')}}">Crear cuenta</a></span>
+                    </div>
+                    <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+                </form>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}

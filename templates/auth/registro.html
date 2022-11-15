@@ -1,0 +1,48 @@
+{% extends './base.html' %} {% block title %}Registro{% endblock %} {% block
+customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+{% endblock %} {% block body %}
+
+<div class="modal modal-signin d-block py-5" tabindex="-1" role="dialog" id="modalSignin">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-5 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <!-- <h5 class="modal-title">Modal title</h5> -->
+                <h2 style="margin: auto" class="fw-bold mb-0">Registrarse es Gratis</h2>
+            </div>
+
+            <div class="modal-body p-5 pt-0">
+                <form method="post" action="/registro" >
+                    <div class="form-floating mb-3">
+                        <input autocomplete="off" type="text" class="form-control rounded-4" id="floatingInput"
+                            placeholder="Nombre"  name="nombre"/>
+                        <label for="floatingInput">Nombre</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text"  autocomplete="off" class="form-control rounded-4" id="floatingInput"
+                            placeholder="Usuario"  name="userName"/>
+                        <label for="floatingInput">Usuario</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control rounded-4" id="floatingPassword"
+                            placeholder="Contraseña" name="password" />
+                        <label for="floatingPassword">Contraseña</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-4 btn-primary" type="submit">
+                        Registrarse
+                    </button>
+                    <small class="text-muted">Al hacer clic en Registrarse, acepta los términos de uso</small>
+                    <span class="text-muted"><br>Ya tengo cuenta, <a href="{{url_for('login')}}">Iniciar Sesion</a></span>
+                    <hr class="my-4" />
+                    <h2 class="fs-5 fw-bold mb-3">O inicie sesion con</h2>
+                    <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4" type="submit">
+                        <img width="6%" src="/static/img/facebook.png">
+                        Iniciar Con Facebook
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
