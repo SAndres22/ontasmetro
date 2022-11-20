@@ -1,69 +1,7 @@
 {% extends './base.html' %} {% block title %}Ver Rutas{% endblock %} {% block
 customCSS %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
-{% endblock %} {% block body %} {% if current_user.is_authenticated %}
-
-<section class="encabezado">
-    <div class="py-3">
-        <a href="/home" class="align-items-center">
-            <img src="{{ url_for('static', filename='img/Metrolinea_Logo.png') }}" alt="Logo de Metroliena" width="180"
-                height="45" />
-        </a>
-    </div>
-</section>
-
-{% endif %}
-
-<header class="p-3 bg-dark mb">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li>
-                    <a href="{{url_for('home')}}" class="nav-link px-2 text-white">Inicio</a>
-                </li>
-                <li>
-                    <a href="{{url_for('ver_Rutas')}}" class="nav-link px-2 text-white">Ver rutas</a>
-                </li>
-                <li>
-                    <a href="{{url_for('ver_estaciones')}}" class="nav-link px-2 text-white">Ver estaciones</a>
-                </li>
-                <li>
-                    <a href="{{url_for('ubicacion_actual')}}" class="nav-link px-2 text-white">Ubicación actual</a>
-                </li>
-            </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-                    aria-label="Search" />
-            </form>
-
-            <div class="text-end">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        {{current_user.nombre}}
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <button class="dropdown-item" type="button">
-                                <a href="{{url_for('ver_perfil')}}">Ver perfil</a>
-                            </button>
-                        </li>
-                        <li><button class="dropdown-item" type="button">Ayuda</button></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li>
-                            <button class="dropdown-item" type="button">
-                                <a href="{{url_for('logout')}}">Cerrar Sesion</a>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+{% endblock %} {% block body %} 
 
 <section class="container mb">
     <div class="mb">
@@ -80,53 +18,10 @@ customCSS %}
 
 </section>
 
-<!-- footer -->
-<div class="container-fluid footer">
-    <footer class="py-2">
-        <div style="margin-top: 2em" class="row">
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Ubicación oficina de atención al usuario</h5>
-                <p style="font-size: 0.8em">
-                    Túnel de la estación de provenza occidentalAutopista Floridablanca N°
-                    86-30Barrio Diamante IITeléfono: (+57) (607) 692-9822Whatsapp WEB:
-                    301-517-9379Bucaramanga, Santander
-                </p>
-            </div>
 
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Horario de atención</h5>
-                <p style="font-size: 0.8em">
-                    Lunes a Viernes7:30 a.m. a 12:00m. - 1:30 p.m. a 5:00 p.m.Email para
-                    PQRSDF: pqrs@metrolinea.gov.coEmail
-                </p>
-            </div>
-
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Ubicación sede administrativa</h5>
-                <p style="font-size: 0.8em">
-                    Autopista Floridablanca N° 86-30Barrio Diamante IITeléfono: (+57)
-                    (607) 692-9824Bucaramanga, Santander
-                </p>
-            </div>
-
-            <div class="col-md-5 offset-md-1 mb-3">
-                <form>
-                    <h5>Subscribe to our newsletter</h5>
-                    <p>Monthly digest of what's new and exciting from us.</p>
-                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                        <label for="newsletter1" class="visually-hidden">Email address</label>
-                        <input id="newsletter1" type="text" class="form-control" placeholder="Email address" />
-                        <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="border-top">
-            <p style="text-align: center">
-                &copy; 2022 Company, Inc. All rights reserved.
-            </p>
-        </div>
-    </footer>
-</div>
+<footer class="container-fluid footer p-3">
+    <hr class="featurette-divider">
+    <p style="text-align: center;">&copy; 2022 Company, Inc. ¿Ontas Metro?.</p>
+</footer>
 
 {% endblock %}

@@ -1,3 +1,8 @@
+body {
+    min-height: 75rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
 
 .social-networks{
     margin: 10px;
@@ -32,7 +37,38 @@
 
 .footer, .encabezado{
     background: rgb(177,195,13);
-background: radial-gradient(circle, rgba(177,195,13,1) 0%, rgba(17,94,40,1) 100%);
+    background: radial-gradient(circle, rgba(177,195,13,1) 0%, rgba(17,94,40,1) 100%);
+}
+
+.offcanvas-mio{
+    top: 4rem;
+    bottom: 4rem;
+    right: 0;
+    width: 100%;
+    border-left: 1px solid rgba(0,0,0,.2);
+    transform: translateX(100%);
+}
+
+/* Login y registro */
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 @media only screen and (min-width: 768px) {

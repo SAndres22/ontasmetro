@@ -11,11 +11,114 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!-- Custom CSS -->
+    <script src="https://kit.fontawesome.com/ee7ae11530.js" crossorigin="anonymous"></script>
     {% block customCSS %}
     {% endblock %}
 </head>
 
 <body class="text-center">
+    <header class="p-3 bg-dark fixed-top">
+        <div class="container d-flex align-items-center justify-content-around">
+            <div>
+                <a href="/" class="text-decoration-none">
+                    <i class="fa-solid fa-magnifying-glass text-white"></i>
+                </a>
+            </div>
+    
+            <div>
+                <a href="/">
+                    <img src="{{ url_for('static', filename='img/Metrolinea_Logo.png') }}" alt="Logo de Metroliena"
+                        width="40%">
+                </a>
+            </div>
+
+
+            {% if current_user.is_authenticated %}
+            <div class="dropdown">
+                <div class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-regular fa-user text-white"></i>
+                </div>
+                <ul class="dropdown-menu" style="text-align: center;">
+                    <li  class="bg-primary mb-2 p-2"><a href="{{url_for('logout')}}"  class="text-white me-2 text-decoration-none ">Cerrar Sesion</a></li>
+                    
+                </ul>
+            </div>
+            {% else %}
+            <div class="dropdown">
+                <div class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-regular fa-user text-white"></i>
+                </div>
+                <ul class="dropdown-menu" style="text-align: center;">
+                    <li class="bg-primary mb-2 p-2"><a href="{{url_for('login')}}"  class="text-white me-2 text-decoration-none ">Ingresar</a></li>
+                    <li class="bg-warning p-2"><a href="{{url_for('registro')}}"  class="text-white me-2 text-decoration-none ">Registrarse</a></li>
+                </ul>
+            </div>
+            {% endif %}
+
+        </div>
+    </header>
+    
+    
+    
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{{ url_for('static', filename='img/metrolinea.png')}} " width="100" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="offcanvas offcanvas-mio" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-body bg-dark">
+                    {% if current_user.is_authenticated %}
+                    <h4 class="mt-5 mb-3 text-white">{{current_user.nombre}}</h4>
+                    
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">INICIO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('ver_Rutas')}}">VER RUTAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('ver_estaciones')}}">VER ESTACIONES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('ubicacion_actual')}}">UBICACION ACTUAL </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('ver_perfil')}}">VISITAR PERFIL</a>
+                        </li>
+
+                        <hr class="featurette-divider">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">AYUDA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">IDIOMAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TERMINOS Y CONDICIONES</a>
+                        </li>
+                        {% else %}
+                        <h4 class="mt-5 mb-3 text-white">¿Ontas Metro?</h4>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">AYUDA</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">IDIOMAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TERMINOS Y CONDICIONES</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
     {% block body %}
     {% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
